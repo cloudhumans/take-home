@@ -14,7 +14,7 @@ Your task is to develop an API with an endpoint that returns appropriate chatbot
 
 ![image](https://github.com/user-attachments/assets/6b2a826c-6630-4424-b08c-e295d6232770)
 
-### Sample of expected request payload
+### Sample Request
 
 ```http
 POST /conversations/completions
@@ -30,10 +30,9 @@ POST /conversations/completions
 }
 ```
 
-### Sample response
+### Sample Response
 
 ```http
-HTTP/1.1 201 Created
 {
     "messages": [
         {
@@ -45,18 +44,12 @@ HTTP/1.1 201 Created
             "content": "Hello! How can I assist you today? I'm Claudia, your Tesla support assistant 😊\nTesla batteries are designed to last many years; the vehicle will notify you if maintenance is needed! Let me know if you have more questions! 🚗⚡"
         }
     ],
-    "sectionsUsed": [
-        {
-            "content": "How do I know if my Tesla battery needs replacement? Tesla batteries are designed to last many years; the vehicle will notify you if maintenance is needed."
-        },
-        {
-            "content": "What is Tesla's battery warranty? Tesla’s battery warranty typically lasts for 8 years or about 150,000 miles, depending on the model."
-        },
-        {
-            "content": "What happens if the Tesla battery completely drains? The car will need to be towed to a charging station."
-        }
-    ],
-    "handoverToHumanNeeded": false
+    "handoverToHumanNeeded": false,
+    "sectionsRetrieved": [
+        { "score": 0.6085123, "content": "How do I know if my Tesla battery needs replacement? Tesla batteries are designed to last many years; the vehicle will notify you if maintenance is needed." },
+        { "score": 0.5785547, "content": "What is Tesla's battery warranty? Tesla’s battery warranty typically lasts for 8 years or about 150,000 miles, depending on the model." },
+        ...
+    ]    
 }
 ```
 
@@ -66,8 +59,8 @@ HTTP/1.1 201 Created
 ### What You'll Need to Do
 
 - **Use RAG (Retrieval Augmented Generation)**: Implement this technique in your endpoint (simple explanation [here](https://lucvandonkersgoed.com/2023/12/11/retrieval-augmented-generation-rag-simply-explained/)).
-- **Leverage Provided Resources**: We've supplied sample HTTP calls via CURL that you can import into Postman to speed things up—we don't want to waste your time reading docs.
-- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations of the decisions you made. For that purpose, provide a README explaining your ideas.
+- **Use Provided Resources**: We've supplied sample HTTP calls via CURL that you can import into Postman to speed things up—we don't want to waste your time reading docs.
+- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations of the decisions you made and how it could evolve. For that purpose, provide a README explaining your ideas. 
 
   *In your README file, please include:*
 
