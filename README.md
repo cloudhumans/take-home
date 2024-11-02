@@ -97,11 +97,11 @@ Here are the request samples you will need in your application (tip: import them
 
 ### Embed the User Question
 
-Replace `OPEN_AI_KEY` with the private key we sent you.
+Use the `$OPEN_AI_KEY` we sent you.
 
 ```bash
 curl https://api.openai.com/v1/embeddings \
-  -H "Authorization: Bearer OPEN_AI_KEY" \
+  -H "Authorization: Bearer $OPEN_AI_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "text-embedding-3-large",
@@ -111,12 +111,12 @@ curl https://api.openai.com/v1/embeddings \
 
 ### Semantic Search on Vector DB
 
-Replace `[...embeddings here...]` with the vector returned by the embeddings model. Replace `AZURE_AI_SEARCH_KEY` with the private key we sent you.
+Replace `[...embeddings here...]` with the vector returned by the embeddings model. Use the `$AZURE_AI_SEARCH_KEY` we sent you.
 
 ```bash
 curl --location --request POST 'https://claudia-db.search.windows.net/indexes/claudia-ids-index-large/docs/search?api-version=2023-11-01' \
 --header 'Content-Type: application/json' \
---header 'api-key: AZURE_AI_SEARCH_KEY' \
+--header 'api-key: $AZURE_AI_SEARCH_KEY' \
 --data-raw '{
     "count": true,
     "select": "content",
@@ -137,7 +137,7 @@ curl --location --request POST 'https://claudia-db.search.windows.net/indexes/cl
 
 ```bash
 curl https://api.openai.com/v1/chat/completions \
-  -H "Authorization: Bearer OPEN_AI_KEY" \
+  -H "Authorization: Bearer $OPEN_AI_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "gpt-4o",
