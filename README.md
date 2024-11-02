@@ -1,6 +1,6 @@
 # Welcome to the Cloud Humans Take-Home Assignment!
 
-Hey there! We're super excited that you're interested in joining our all-star team at Cloud Humans. We've got some of the top engineers in Brazil, and we're looking forward to seeing what you can bring to the table. We've put together this fun little challenge to give you a taste of what we do—no complicated tasks or hidden gotchas here. Just a straightforward project to let your skills shine. Let's get started!
+Hey there! We're super excited that you're interested in joining our all-star team at Cloud Humans. We've got some of the top engineers in Brazil, and we're looking forward to seeing what you can bring to the table. We've put together this fun little challenge to give you a taste of what we do — no complicated-to-understand tasks or hidden gotchas here. Just a straightforward project to let your skills shine. Let's get started! 🚀
 
 ## About Us
 
@@ -10,39 +10,16 @@ By integrating generative AI with Reinforcement Learning from Human Feedback (RL
 
 ## The Challenge
 
-Your task is to create an API with an endpoint that returns the appropriate chatbot response based on the content for a specific company. Our fake customer in this challenge will be Tesla Motors but your solution must accept others as well. At cloud humans
+Your task is to develop an API with an endpoint that returns appropriate chatbot responses based on content for a specific company. In this challenge, our mock customer is Tesla Motors, but your solution should be designed to accommodate others as well. Imagine you're building this foundational component as the first step in a larger architecture that doesn't exist yet, but may look like this.
 
-[image]
+![image](https://github.com/user-attachments/assets/6b2a826c-6630-4424-b08c-e295d6232770)
 
-### What You'll Need to Do
-
-- **Use [RAG (Retrieval Augmented Generation)](https://lucvandonkersgoed.com/2023/12/11/retrieval-augmented-generation-rag-simply-explained/)**: Implement this technique in your endpoint.
-- **Leverage Provided Resources**: We've supplied sample HTTP calls via CURL that you can import into Postman to speed things up—we don't want to waste your time reading docs.
-- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations of the decisions you made. For that purpose, provide a README explaining your ideas.
-
-  *In your README file, please include:*
-
-  1. **Instructions to Run the Code**: Step-by-step guide on how to set up and run your project (docker would be awesome).
-  2. **Main Technical Decisions**: Explain the key choices you made during development.
-  3. **Relevant Comments About Your Project**: Any additional insights or considerations.
-
-- **Use English**: Please use English in your code and documentation.
-
-### What We Provide
-
-- **OpenAI API Key**: You'll get an API key to use OpenAI's `embeddings-large` and `GPT-4o` (chat completions) models.
-- **Improved Data Set (IDS)**: We call our "FAQs" as "IDS". Think of it as our beefed-up FAQ. For this challenge, we've created an [IDS](https://docs.google.com/spreadsheets/d/1SbLV3OA6m3dYery6AqgPruxYTjEZ5TJlrtxK7bn8pEA/edit?usp=sharing) that's already populated in our Vector DB (hosted on Azure AI Search) so you don't need to create or mainting it for this challenge.
-
-## Rules for the AI Response
-
-1. **Clarify When Unsure**: If the AI doesn't have enough info to provide a solid answer, it should ask the user for more details.
-2. **Limit Clarifications**: The AI can make up to **2 clarifications** per conversation. If a 3rd is needed, it should inform the user that the ticket will be escalated to a human specialist and set `handoverToHumanNeeded: true` in the response.
-
-## Sample of expected request payload
+### Sample of expected request payload
 
 ```http
 POST /conversations/completions
-{    
+{
+    "helpdeskId": 123456,
     "projectName": "tesla_motors",
     "messages": [
         {
@@ -53,7 +30,7 @@ POST /conversations/completions
 }
 ```
 
-## Sample response
+### Sample response
 
 ```http
 HTTP/1.1 201 Created
@@ -85,7 +62,32 @@ HTTP/1.1 201 Created
 
 *Feel free to adjust the field names and formatting (snake_case, camelCase, etc.) to suit your preference—no tricks here! Our goal is to make it as straightforward as possible for you, regardless of the language or framework you choose.*
 
-## Sample requests you will need to use in your endpoints
+
+### What You'll Need to Do
+
+- **Use RAG (Retrieval Augmented Generation)**: Implement this technique in your endpoint (simple explanation [here](https://lucvandonkersgoed.com/2023/12/11/retrieval-augmented-generation-rag-simply-explained/)).
+- **Leverage Provided Resources**: We've supplied sample HTTP calls via CURL that you can import into Postman to speed things up—we don't want to waste your time reading docs.
+- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations of the decisions you made. For that purpose, provide a README explaining your ideas.
+
+  *In your README file, please include:*
+
+  1. **Instructions to Run the Code**: Step-by-step guide on how to set up and run your project (docker would be awesome).
+  2. **Main Technical Decisions**: Explain the key choices you made during development.
+  3. **Relevant Comments About Your Project**: Any additional insights or considerations.
+
+- **Use English**: Please use English in your code and documentation.
+
+## Rules for the AI Response
+
+1. **Clarify When Unsure**: If the AI doesn't have enough info to provide a solid answer, it should ask the user for more details.
+2. **Limit Clarifications**: The AI can make up to **2 clarifications** per conversation. If a 3rd is needed, it should inform the user that the ticket will be escalated to a human specialist and set `handoverToHumanNeeded: true` in the response.
+
+# What We Provide
+
+- **OpenAI API Key**: We'll provide you with an API key to use OpenAI's `text-embedding-ada-002` model for embeddings and the `gpt-4` model for chat completions.
+- **Vector DB Key**: We refer to our FAQs as the "Improved Data Set" (IDS) — think of it as our beefed-up FAQ on steroids. For this challenge, we've prepared an [IDS](https://docs.google.com/spreadsheets/d/1SbLV3OA6m3dYery6AqgPruxYTjEZ5TJlrtxK7bn8pEA/edit?usp=sharing) that's already populated in our vector database (hosted on Azure AI Search), so you don't need to create or maintain any content for this challenge.
+  
+## Requests you will need to use in your endpoints
 
 ### Embed the User Question
 
