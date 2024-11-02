@@ -119,7 +119,7 @@ curl --location --request POST 'https://claudia-db.search.windows.net/indexes/cl
 --header 'api-key: $AZURE_AI_SEARCH_KEY' \
 --data-raw '{
     "count": true,
-    "select": "content",
+    "select": "content, type",
     "top": 10,
     "filter": "projectName eq '\''tesla_motors'\''",
     "vectorQueries": [
