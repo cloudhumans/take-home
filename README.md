@@ -72,15 +72,28 @@ POST /conversations/completions
 
 ## Rules for the AI Response
 
-1. **Clarify When Unsure**: If the AI doesn't have enough info to provide a solid answer, it should ask the user for more details.
-2. **Limit Clarifications**: The AI can make up to **2 clarifications** per conversation. If a 3rd is needed, it should inform the user that the ticket will be escalated to a human specialist and set `handoverToHumanNeeded: true` in the response.
+1. **Use Only IDS Content**: The AI should not use any information outside of the provided Improved Data Set (IDS) when generating responses.
+
+### Choose one of the following features to implement:
+
+#### Option 1: Clarification Feature
+
+2. **Clarify When Unsure**: If the AI doesn't have enough info to provide a solid answer, it should ask the user for more details.
+
+3. **Limit Clarifications**: The AI can make up to **2 clarifications** per conversation. If a 3rd is needed, it should inform the user that the ticket will be escalated to a human specialist and set `handoverToHumanNeeded: true` in the response.
+
+#### Option 2: Smart Handover Feature
+
+4. **Automatic escalation for N2 content**: Whenever a user asks about content labeled with type **N2** by the Vector DB, the API should return `handoverToHumanNeeded: true` along with the answer. Note: N1 content types are those which the AI should be able to answer by itself entirely; N2 are the content that should be redirected to a human after being replied to the user.
+
+**Note**: Your solution doesn't need to be rocket science. It can be as simple as some IF statements if you think it would be a good start. Think of what you're building as an MVP; it doesn't have to be perfect. If you have some cool ideas that would be hard to implement or test, please share them in the README.
 
 # What We Provide
 
 - **OpenAI API Key**: We'll provide you with an API key to use OpenAI's `text-embedding-ada-002` model for embeddings and the `gpt-4` model for chat completions.
 - **Vector DB Key**: We refer to our FAQs as the "Improved Data Set" (IDS) — think of it as our beefed-up FAQ on steroids. For this challenge, we've prepared an [IDS](https://docs.google.com/spreadsheets/d/1SbLV3OA6m3dYery6AqgPruxYTjEZ5TJlrtxK7bn8pEA/edit?usp=sharing) that's already populated in our vector database (hosted on Azure AI Search), so you don't need to create or maintain any content for this challenge.
   
-## Requests you will need to use in your endpoints
+Here are the request samples you will need in your application (tip: import them on postman to test and understand how they work):
 
 ### Embed the User Question
 
