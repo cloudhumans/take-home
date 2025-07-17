@@ -4,7 +4,7 @@ Hey there! We're super excited that you're interested in joining our all-star te
 
 ## About Us
 
-Cloud Humans is an innovative AI platform specializing in customer support through text channels. We're leading the revolution in customer service by providing advanced, AI-driven Customer Experience solutions for SaaS, Fintech, and tech-driven companies like Nuvemshop, CRM&BONUS, Hotmart, Zippi, and Insider.
+Cloud Humans is an innovative AI platform specializing in customer support through text channels. We're leading the revolution in customer service by providing advanced, AI-driven Customer Experience solutions for SaaS, Fintech, and tech-driven companies like Shopee, Hotmart, Insider and Alura.
 
 By integrating generative AI with Reinforcement Learning from Human Feedback (RLHF), our platform enables brands to respond to 50% to 85% of customer messages without human assistance (averaging 65%), all while maintaining human-like quality. We manage around 400,000 support tickets per month and hit the 3 million ticket mark in August 2024. Our founders are former execs from Uber, Rappi, Creditas, and Loft, backed by investors like Canary VC, Grão, and Y Combinator.
 
@@ -60,15 +60,16 @@ POST /conversations/completions
 
 - **Use RAG (Retrieval Augmented Generation)**: Implement this technique in your endpoint (simple explanation [here](https://lucvandonkersgoed.com/2023/12/11/retrieval-augmented-generation-rag-simply-explained/)).
 - **Use Provided Resources**: We've supplied sample HTTP calls via CURL that you can import into Postman to speed things up—we don't want to waste your time reading docs.
-- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations of the decisions you made and how it could evolve. For that purpose, provide a README explaining your ideas. 
-
-  *In your README file, please include:*
-
-  1. **Instructions to Run the Code**: Step-by-step guide on how to set up and run your project (docker would be awesome).
+- **Focus on Code and Solution**: We want to see your code—simplicity, readability, and maintainability are key. Please include explanations in the README.md file at the projet's root about the decisions you made and how it could evolve. 
+- **Docker**: Please use docker to make it ease for us to run your code
+- **Code language**: Please use English in your code
+  
+*In your README file, please include:*
+  1. **Instructions to Run the Code**: Step-by-step guide on how to set up and run your project
   2. **Main Technical Decisions**: Explain the key choices you made during development.
   3. **Relevant Comments About Your Project**: Any additional insights or considerations.
+  4. **Comments in portuguese**: Let's use our mother language there to speed things up ;D
 
-- **Use English**: Please use English in your code and documentation.
 
 ## Rules for the AI Response
 
@@ -82,11 +83,11 @@ POST /conversations/completions
 
 3. **Limit Clarifications**: The AI can make up to **2 clarifications** per conversation. If a 3rd is needed, it should inform the user that the ticket will be escalated to a human specialist and set `handoverToHumanNeeded: true` in the response.
 
-#### Option 2: Smart Handover Feature
+#### Option 2: Handover Feature
 
-4. **Automatic escalation for N2 content**: Whenever a user asks about content labeled with type **N2** by the Vector DB, the API should return `handoverToHumanNeeded: true` along with the answer. Note: N1 content types are those which the AI should be able to answer by itself entirely; N2 are the content that should be redirected to a human after being replied to the user.
+4. **Automatic escalation for N2 content**: Whenever asks something related about a content labeled with type **N2** returned by the Vector DB, the API should return `handoverToHumanNeeded: true` along with the answer. Note: N1 content types are those which the AI should be able to answer by itself entirely; N2 are the content that are marked as "this should be redirected to a human" by our customers (leaders/heads of CX)
 
-**Note**: Your solution doesn't need to be rocket science. It can be as simple as some IF statements if you think it would be a good start. Think of what you're building as an MVP; it doesn't have to be perfect. If you have some cool ideas that would be hard to implement or test, please share them in the README.
+**Note**: Your solution doesn't need to be rocket science and there is no right or wrong way of implementing the features above. It can be as simple as some IF statements if you think it would be a good start. Think of what you're building as an MVP; it doesn't have to be perfect. If you have some cool ideas that would be hard to implement or test, please share them in the README. 
 
 # What We Provide
 
